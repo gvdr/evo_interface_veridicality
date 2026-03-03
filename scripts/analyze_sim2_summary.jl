@@ -195,13 +195,13 @@ function capacity_bar_plot(s::DataFrame)
 
     # Vertical version for side-by-side layout with family overlay
     fig_v = Figure(size=(480, 500), fontsize=16)
-    ax1v = Axis(fig_v[1, 1], title="Eco-Veridical Fraction",
+    ax1v = Axis(fig_v[1, 1], title="",
         xlabel="Capacity", ylabel="Eco-veridical fraction", xticks=(xs, xt))
     barplot!(ax1v, xs, df.mean_eco, color=[:firebrick, :dodgerblue])
     errorbars!(ax1v, xs, df.mean_eco, df.ci_eco, color=:black, whiskerwidth=10)
     ylims!(ax1v, -0.02, 1.02)
 
-    ax2v = Axis(fig_v[2, 1], title="Mean Bayes Risk",
+    ax2v = Axis(fig_v[2, 1], title="",
         xlabel="Capacity", ylabel="Mean Bayes risk", xticks=(xs, xt))
     barplot!(ax2v, xs, df.mean_risk, color=[:firebrick, :dodgerblue])
     errorbars!(ax2v, xs, df.mean_risk, df.ci_risk, color=:black, whiskerwidth=10)
@@ -243,7 +243,7 @@ function strong_claim_plot(s::DataFrame)
     errorbars!(ax1, 1:3, means, cis, color=:black, whiskerwidth=10)
     ylims!(ax1, -0.02, 1.02)
     text!(ax1, 1:3, means .+ 0.04,
-          text=["n = " * string(n) for n in ns], align=(:center, :bottom), fontsize=12)
+          text=["n = " * string(n) for n in ns], align=(:center, :bottom), fontsize=16)
 
     ax2 = Axis(fig[1, 2],
         title="Null-Diffusion Baseline Check (log scale)",
@@ -257,7 +257,7 @@ function strong_claim_plot(s::DataFrame)
     hlines!(ax2, [p_null], color=:black, linestyle=:dash, linewidth=2)
     ax2.yscale = log10
     text!(ax2, 2.0, p_null * 1.3, text="random-map null = " * string(round(p_null, sigdigits=3)),
-          align=(:center, :bottom), fontsize=11)
+          align=(:center, :bottom), fontsize=16)
 
     save(joinpath(FIG_DIR, "sim2_strong_claim_regimes.pdf"), fig; pt_per_unit=1)
     save(joinpath(FIG_DIR, "sim2_strong_claim_regimes.png"), fig; px_per_unit=3)
@@ -381,7 +381,7 @@ function main()
 
     family_panel_plot(agg, :mean_full, :ci_full,
         "Full-veridical fraction",
-        "sim2: Family-wise Veridicality vs Task Count (M=2 vs M=11)",
+        "Family-wise Veridicality vs Task Count (M=2 vs M=11)",
         "sim2_family_full_vs_T")
 
     family_overlay_plot(agg, :mean_full, :ci_full,
@@ -391,7 +391,7 @@ function main()
 
     family_panel_plot(agg, :mean_risk, :ci_risk,
         "Mean Bayes risk",
-        "sim2: Family-wise Final Risk vs Task Count (M=2 vs M=11)",
+        "Family-wise Final Risk vs Task Count (M=2 vs M=11)",
         "sim2_family_risk_vs_T")
 
     kappa_scatter_plot(s)

@@ -1,4 +1,4 @@
-\begin{thebibliography}{27}
+\begin{thebibliography}{29}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -28,6 +28,12 @@ Marlene~D. Berke, Robert Walter-Terrill, Julian Jara-Ettinger, and Brian~J.
 \newblock Flexible goals require that inflexible perceptual systems produce
   veridical representations.
 \newblock \emph{Cognitive Science}, 46\penalty0 (10):\penalty0 e13195, 2022.
+
+\bibitem[Eigen(1971)]{eigen_1971}
+Manfred Eigen.
+\newblock Self-organization of matter and the evolution of biological
+  macromolecules.
+\newblock \emph{Naturwissenschaften}, 58:\penalty0 465--523, 1971.
 
 \bibitem[Ethier and Kurtz(1986)]{ethier_kurtz_1986}
 Stewart~N. Ethier and Thomas~G. Kurtz.
@@ -100,6 +106,13 @@ Marco Morandotti and Gianluca Orlando.
   {M}oran process in the weak selection regime.
 \newblock 2025.
 \newblock arXiv:2501.12688.
+
+\bibitem[Park et~al.(2010)Park, Mu{\~n}oz, and Deem]{park_munoz_deem_2010}
+Jeong-Man Park, Enrique Mu{\~n}oz, and Michael~W. Deem.
+\newblock Quasispecies theory for finite populations.
+\newblock \emph{Physical Review E}, 81\penalty0 (1):\penalty0 011902, 2010.
+\newblock \doi{10.1103/PhysRevE.81.011902}.
+\newblock URL \url{https://link.aps.org/doi/10.1103/PhysRevE.81.011902}.
 
 \bibitem[Pigliucci and Kaplan(2006)]{pigliucci_kaplan_2006}
 Massimo Pigliucci and Jonathan Kaplan.

@@ -74,7 +74,7 @@
 
 % ── Abstract ──
 \begin{abstract}
-When does optimisation for performance yield representations that track world structure? We develop a mathematical theory of agents with a single fixed encoding shared across tasks, and use it to resolve the broader debate over whether selection favors fitness-tuned interfaces or veridical perception. Selection favors \emph{ecological veridicality}: preserving exactly those world-state distinctions required by the task ecology. The governing object is a separation condition on the task distribution $\mu$: if a pair of states is distinguished on tasks with positive $\mu$-measure, optimal encodings must separate it. In evolutionary terms, distinctions that systematically affect fitness across the ecology are selected to persist, while distinctions with zero aggregate fitness consequence can collapse neutrally without risk penalty. We prove static optimality results and deterministic evolutionary convergence (Price decomposition plus quasispecies recursion) to the best mutation-accessible optimum, with global convergence under primitive mutation and Wright--Fisher finite-population approximation on fixed horizons. As task diversity increases, resolved ecological complexity $k_T = |W/{\sim_T}|$ grows monotonically (graded cascade). The framework recovers Hoffman's Fitness-Beats-Truth result as the single-task case and explains \citet{berke_etal_2022}'s multi-task findings as the capacity-aware multi-task regime.
+When does optimisation for performance yield representations that track world structure? We develop a mathematical theory of agents with a single fixed encoding shared across tasks, and use it to resolve the broader debate over whether selection favors fitness-tuned interfaces or veridical perception. Selection favors \emph{ecological veridicality}: preserving exactly those world-state distinctions required by the task ecology. The governing object is a separation condition on the task distribution $\mu$: if a pair of states is distinguished on tasks with positive $\mu$-measure, optimal encodings must separate it. In evolutionary terms, distinctions that systematically affect fitness across the ecology are selected to persist, while distinctions with zero aggregate fitness consequence can collapse neutrally without risk penalty. We prove static optimality results and deterministic evolutionary convergence (Price decomposition plus quasispecies recursion) to the best mutation-accessible optimum, with global convergence under primitive mutation and Wright--Fisher finite-population approximation on fixed horizons. As task diversity increases, resolved ecological complexity $k_T = |W/{\sim_T}|$ grows monotonically (graded cascade). The framework recovers both poles of the Hoffman--Berke debate: in the single-task limit, fitness-tuned interface encodings can dominate truth-tracking encodings (Hoffman), while in the fixed-encoding multi-task regime, selection favors ecological veridicality up to capacity limits (Berke et al.).
 \end{abstract}
 
 % ── BODY SECTIONS (to be filled) ──
@@ -101,7 +101,7 @@ The core results are:
 \item Recovery of Hoffman's FBT as the single-task special case and Berke et al.'s simulations as a numerical instance, plus a heuristic FMB connection (\cref{app:fmb}).
 \end{enumerate}
 
-Our contribution is to give the multi-task sufficiency principle (established in statistical learning theory by \citealp{baxter_2000} and \citealp{maurer_etal_2016}; see \cref{sec:related}) a precise formulation in terms of the separation condition and the graded cascade, to prove deterministic mean-field convergence under evolutionary dynamics via quasispecies theory (with finite-population approximation guarantees), and to show that the resulting framework resolves the Hoffman/Berke debate while providing a mathematical formalisation of aspects of \citeauthor{vonuexkull_1934}'s~(\citeyear{vonuexkull_1934}) species-specific perceptual world (Umwelt).
+Our contribution is a synthesis built on these strands: we adapt the shared-representation insight from statistical learning theory \citep{baxter_2000,maurer_etal_2016} to the Hoffman/Berke evolutionary-perception setting, formalise it through the separation condition and graded cascade, prove deterministic mean-field convergence under evolutionary dynamics via quasispecies theory (with finite-population approximation guarantees), and show that the resulting framework resolves the Hoffman/Berke debate while providing a mathematical formalisation of aspects of \citeauthor{vonuexkull_1934}'s~(\citeyear{vonuexkull_1934}) species-specific perceptual world (Umwelt).
 
 The paper is organised as follows. \Cref{sec:framework} sets up the framework: world states, encodings, tasks, Bayes risk. \Cref{sec:separation} defines the separation condition and the task distance. \Cref{sec:static} proves the static optimality theorems, including the main veridicality result, the lossy case, the phase transition, and the graded cascade. \Cref{sec:concentration} provides finite-sample concentration bounds. \Cref{sec:gaussian} develops the Gaussian task model and spectral analysis. \Cref{sec:evolution} proves mean-field evolutionary convergence via Price's equation and quasispecies theory to dominant mutation-accessible classes (global convergence under primitive mutation), and states the finite-population approximation on fixed horizons. \Cref{sec:recovery} summarises the recovery of prior results as special cases, with full details in \cref{app:recovery}. \Cref{sec:discussion} discusses the implications, including the distinction between static optimality and evolutionary dynamics (\S\ref{sec:levels}), the ecological Umwelt interpretation (\S\ref{sec:umwelt}), and limitations (\S\ref{sec:limitations}), with philosophy-of-evolution considerations woven into those sections. \Cref{app:fmb} gives a heuristic connection to Frank's FMB law, and \cref{app:proof74} gives the full reducible-case proof for the primitive-block setting plus a periodic-class extension.
 
@@ -109,7 +109,7 @@ The paper is organised as follows. \Cref{sec:framework} sets up the framework: w
 \subsection{Related Work and Intellectual Genealogy}\label{sec:related}
 %==============================================================================
 
-The qualitative principle underlying our main result, that optimal multi-task representation preserves task-relevant distinctions, is established in statistical learning theory. \citet{baxter_2000} proved that learning a shared representation across multiple tasks converges to the common sufficient statistic of the task family, with sample complexity that decreases as the number of tasks grows. \citet{maurer_etal_2016} provided finite-sample PAC-Bayes bounds showing that shared representations recover ground-truth subspaces in multi-task settings. In the information-theoretic literature, the same principle appears as the statement that the minimal sufficient statistic for a family of distributions is the optimal data reduction.
+The qualitative motivation for our main result is consistent with statistical learning theory: shared representations can improve cross-task generalisation. \citet{baxter_2000} analysed inductive bias learning in environments of related tasks and derived sample-complexity improvements from multi-task training. \citet{maurer_etal_2016} derived finite-sample excess-risk bounds characterising regimes where multi-task representation learning outperforms independent task learning. In the information-theoretic literature, related ideas appear as optimal data reduction via sufficient statistics.
 
 Our contribution is not the discovery of this principle but its embedding in the evolutionary perception framework of \citet{hoffman_etal_2015} and the resolution of specific open questions within that debate. The following table clarifies the correspondence:
 
@@ -438,6 +438,8 @@ and a minimiser exists (finite search space).
 When $M < \kmu$ (in particular $M < N$ under full separation), every feasible encoding is lossy relative to $\mu$ and the optimum is the best $M$-cell partition under $J$.
 \end{theorem}
 
+Here $p_P$ denotes any encoding that realises partition $P$ (it is generally not unique).
+
 \begin{proof}
 (a) is exactly \cref{lem:pairwise} rewritten by cells, so risk depends on $p$ only through $P(p)$. (b) Given $P$ with $m \le M$ cells, assign each cell a distinct label in $X$ and map each $w$ to its cell label; unused labels are allowed. Then $P(p_P) = P$ and (a) gives $R(p_P) = J(P)$. (c) (a)--(b) establish equivalence between optimisation over encodings and optimisation over $\Pi_M$. Since $W$ is finite, $\Pi_M$ is finite, so a minimiser exists.
 \end{proof}
@@ -492,6 +494,7 @@ Let $f_1, \ldots, f_T$ be $T$ tasks. Form the \emph{task matrix} $F \in \R^{T \t
                       = \frac{1}{T} \|F_{\cdot i} - F_{\cdot j}\|^2,
 \end{equation}
 where $F_{\cdot i}$ is the $i$-th column of $F$. Let ${\sim_T}$ be the empirical equivalence relation $w_i \sim_T w_j$ iff $\sigmasq_T(w_i, w_j) = 0$, and $k_T = |W/{\sim_T}|$.
+For each task, write its evaluation vector on $W$ as $v_t := (f_t(w_1), \ldots, f_t(w_N)) \in \R^N$, so $v_t^\top$ is the $t$-th row of $F$.
 
 \begin{enumerate}[label=(\alph*)]
 \item $\sigmasq_T(w_i, w_j) > 0$ for all $i \ne j$ if and only if the columns of $F$ are pairwise distinct (equivalently, $k_T = N$).
@@ -501,7 +504,7 @@ where $F_{\cdot i}$ is the $i$-th column of $F$. Let ${\sim_T}$ be the empirical
 \item Zero empirical Bayes risk is achievable if and only if $M \ge k_T$.
 \item Full empirical veridicality requires both $k_T = N$ and $M \ge N$.
 \end{itemize}
-\item If tasks are drawn from a distribution absolutely continuous on $\R^N$, then with probability $1$ a single task has distinct values on all $N$ states, so $k_1 = N$ and the cascade is trivial. Thus biologically meaningful phase transitions require structured task families.
+\item Let $\nu$ be the sampling law of $v_t$ (the pushforward of the task law under evaluation on $W$). If $\nu \ll \lambda^N$ (absolutely continuous w.r.t.\ Lebesgue measure on $\R^N$), then with probability $1$ a single task has distinct values on all $N$ states, so $k_1 = N$ and the cascade is trivial. Thus biologically meaningful phase transitions require structured task families.
 \end{enumerate}
 \end{theorem}
 
@@ -512,11 +515,15 @@ where $F_{\cdot i}$ is the $i$-th column of $F$. Let ${\sim_T}$ be the empirical
 
 (c) For empirical objective $R_T(p) = (1/T)\sum_t R(p, f_t)$, we have $R_T(p) = 0$ iff $R(p, f_t) = 0$ for every $t$ (nonnegative summands). By \cref{cor:zero-risk}, this holds iff each task $f_t$ is constant on every cell of $p$, equivalently iff each cell is contained in an empirical equivalence class of ${\sim_T}$. Hence one needs at least one percept per ${\sim_T}$-class, i.e.\ $M \ge k_T$, and this is also sufficient by assigning one percept per class.
 
-(d) If $f_1$ is absolutely continuous on $\R^N$, then $P(f_1(w_i) = f_1(w_j)) = 0$ for $i \ne j$. Finite union bound gives pairwise distinctness almost surely.
+(d) By assumption, $v_1 \sim \nu$ with $\nu \ll \lambda^N$. For each $i \ne j$, the tie event $\{v_{1i} = v_{1j}\}$ is the hyperplane $H_{ij} = \{x \in \R^N : x_i = x_j\}$, which has Lebesgue measure $0$. Hence $\nu(H_{ij}) = 0$. A finite union bound over the $\binom{N}{2}$ pairs gives $P(\exists i \ne j: v_{1i} = v_{1j}) = 0$, so the coordinates are pairwise distinct almost surely.
 \end{proof}
 
 \begin{corollary}[Capacity-Aware Transition]\label{cor:capacity}
-Let $T \mapsto k_T$ denote empirical ecological complexity. Then:
+Define empirical ecological complexity at task count $T$ by
+\[
+k_T := |W/{\sim_T}|.
+\]
+Then the sequence $(k_T)_{T \ge 1}$ satisfies:
 \begin{itemize}
 \item The relevant transition at fixed capacity $M$ (as $T$ increases) is from \emph{ecologically veridical} ($k_T \le M$) to \emph{lossy-optimal} ($k_T > M$).
 \item Full veridicality is a special case requiring $k_T = N$ and $M \ge N$.
@@ -578,7 +585,7 @@ Define the \emph{empirical separation margin} $\delta_T = \min_{i \ne j} \sigmas
 \section{Concentration and Finite-Sample Guarantees}\label{sec:concentration}
 %==============================================================================
 
-The static theorems of \cref{sec:static} characterise optimality with respect to the population-level risk $R(p) = \E_{f \sim \mu}[R(p,f)]$. An organism facing $T$ sampled tasks per generation sees the empirical risk $\Rbar_T(p)$, which fluctuates around $R(p)$. How many tasks suffice for the empirical risk to reliably distinguish veridical from non-veridical encodings? The answer is a concentration bound, polynomial rather than exponential in $N$, that justifies the practical relevance of the separation margin $\dmu$.
+The static theorems of \cref{sec:static} characterise optimality with respect to the population-level risk $R(p) = \E_{f \sim \mu}[R(p,f)]$. An organism facing $T$ sampled tasks per generation sees the empirical risk $\Rbar_T(p)$, which fluctuates around $R(p)$. How many tasks suffice for the empirical risk to reliably distinguish veridical from non-veridical encodings? The answer is a standard Hoeffding-plus-union-bound concentration argument \citep{hoeffding_1963}, polynomial rather than exponential in $N$, that justifies the practical relevance of the separation margin $\dmu$.
 
 \begin{theorem}[Exponential Convergence with $T$ Tasks]\label{thm:concentration}
 Let $f_1, \ldots, f_T$ be drawn iid from $\mu$, with $|f(w)| \le B$ for all $w, f$. For any fixed encoding $p$ with $R(p) > 0$:
@@ -589,7 +596,7 @@ where $\Rbar_T(p) = (1/T) \sum_{t=1}^{T} R(p, f_t)$ is the empirical Bayes risk 
 \end{theorem}
 
 \begin{proof}
-The random variables $R(p, f_t)$ are iid with $\E[R(p, f_t)] = R(p) > 0$ and $0 \le R(p, f_t) \le B^2$ (since $\Var(f \mid C_x) \le \E[f^2 \mid C_x] \le B^2$). By Hoeffding's inequality for bounded iid variables in $[0, B^2]$:
+The random variables $R(p, f_t)$ are iid with $\E[R(p, f_t)] = R(p) > 0$ and $0 \le R(p, f_t) \le B^2$ (since $\Var(f \mid C_x) \le \E[f^2 \mid C_x] \le B^2$). By Hoeffding's inequality for bounded iid variables in $[0, B^2]$ \citep{hoeffding_1963}:
 \[
 P\bigl(\Rbar_T - R(p) \le -(R(p) - \eta)\bigr) \le \exp\!\Bigl(-\frac{2T(R(p) - \eta)^2}{(B^2)^2}\Bigr),
 \]
@@ -813,7 +820,7 @@ We now apply Price's equation \citep{price_1970,price_1972} to the encoding popu
 For a fixed generation, write $w(p) := w_t(p)$ for notational simplicity.
 
 \begin{theorem}[Price equation for encoding populations]\label{thm:price}
-Let $z\colon \Omega \to \R$ be any real-valued trait of encodings. The change in population mean of $z$ across one generation satisfies:
+Let $z\colon \Omega \to \R$ be any real-valued trait of encodings. The change in population mean of $z$ across one generation satisfies the Price identity \citep{price_1970,price_1972}:
 \begin{equation}\label{eq:price}
 \wbar \cdot \Delta \bar{z} = \Cov_\pi(w, z) + \E_\pi[w \cdot \delta z],
 \end{equation}
@@ -827,7 +834,7 @@ where:
 \end{theorem}
 
 \begin{proof}
-This is the standard Price equation. Write $\pi'(p)$ for the frequency after selection but before mutation:
+This is the standard Price equation derivation \citep{price_1970,price_1972}. Write $\pi'(p)$ for the frequency after selection but before mutation:
 \[
 \pi'(p) = \pi_t(p) \cdot w(p)/\wbar.
 \]
@@ -917,7 +924,7 @@ The exact identity $\Cov_\pi(W, R) = -T\,\Var_\pi(R)$ is specific to the linear 
 
 \subsection{Quotient-Space Convergence Dynamics}\label{sec:quasispecies}
 
-Price's equation tells us the direction of selection but cannot, by itself, predict where the population ends up. For that we need a dynamical theory. A key structural feature of our model is that expected fitness $W(p)$ depends only on the encoding $p$, not on the population composition. This is the frequency-independent setting of quasispecies theory.
+Price's equation tells us the direction of selection but cannot, by itself, predict where the population ends up. For that we need a dynamical theory. A key structural feature of our model is that expected fitness $W(p)$ depends only on the encoding $p$, not on the population composition. This is the frequency-independent setting of quasispecies theory \citep{eigen_1971,park_munoz_deem_2010}.
 
 \subsubsection{The Quasispecies Recursion}\label{sec:recursion}
 
@@ -939,7 +946,7 @@ for $\lambda = \mathbf{1}^\top A_\varepsilon\, x^*$. Thus fixed points are Perro
 
 \subsubsection{The Perron--Frobenius Argument}\label{sec:perron}
 
-The recursion~\eqref{eq:replicator-mutator} is a normalised iteration of a nonnegative matrix, exactly the setting of Perron--Frobenius theory. The challenge is that the mutation graph need not be strongly connected (primitive): biological viability constraints can partition encoding space into isolated communicating classes. We therefore work with the full reducible structure, identifying which classes are reachable from the initial population and which among those dominate asymptotically.
+The recursion~\eqref{eq:replicator-mutator} is a normalised iteration of a nonnegative matrix, exactly the setting of Perron--Frobenius theory for nonnegative matrices \citep{seneta_2006}. The challenge is that the mutation graph need not be strongly connected (primitive): biological viability constraints can partition encoding space into isolated communicating classes. We therefore work with the full reducible structure, identifying which classes are reachable from the initial population and which among those dominate asymptotically.
 
 By \cref{lem:equivariance}, recursion~\eqref{eq:replicator-mutator} descends to the quotient $\Obar = \Omega/{\sim_X}$ (\cref{def:quotient}). To avoid label-symmetry multiplicity, we work on a canonical representative set $\Omega_c$ (one encoding per orbit), equivalently on $\Obar$. In this subsection, all vectors/matrices and equations~\eqref{eq:replicator-mutator}--\eqref{eq:fixed-point} are interpreted on $\Omega_c$; for readability, we drop bars.
 
@@ -1027,15 +1034,15 @@ The full proof is in \cref{app:proof74}; we outline the architecture here.
 
 Write the replicator-mutator update as the normalised iteration $x_g = A^g x_0 / \mathbf{1}^\top A^g x_0$ with $A = A_\varepsilon = Q_\varepsilon^\top D$, a nonnegative matrix. Because mutation can be constrained, $A$ may be reducible.
 
-\emph{Step 1 (Frobenius decomposition).} Permute $A$ into lower block-triangular form, separating a transient block $T$ from closed communicating-class blocks $B_1, \ldots, B_L$. The closed-part dynamics decomposes into independent primitive blocks plus transient feeding terms that decay exponentially (\cref{lem:frobenius}).
+\emph{Step 1 (Frobenius decomposition).} Permute $A$ into lower block-triangular form, separating a transient block $T$ from closed communicating-class blocks $B_1, \ldots, B_L$ \citep{seneta_2006}. The closed-part dynamics decomposes into independent primitive blocks plus transient feeding terms that decay exponentially (\cref{lem:frobenius}).
 
-\emph{Step 2 (Perron expansion on each block).} Each primitive block $B_i$ has a simple dominant eigenvalue $\lambda_i$ with positive left and right eigenvectors. The Perron--Frobenius theorem gives $B_i^g = \lambda_i^g v_i u_i^\top + O(r_i^g)$ with $r_i < \lambda_i$ (\cref{lem:perron-expansion}).
+\emph{Step 2 (Perron expansion on each block).} Each primitive block $B_i$ has a simple dominant eigenvalue $\lambda_i$ with positive left and right eigenvectors. The Perron--Frobenius theorem gives $B_i^g = \lambda_i^g v_i u_i^\top + O(r_i^g)$ with $r_i < \lambda_i$ \citep{seneta_2006} (\cref{lem:perron-expansion}).
 
-\emph{Step 3 (Dominant class wins).} Among all reachable closed classes, the one with the largest $\lambda_i$ eventually dominates the unnormalised iterate $A^g x_0$: all other contributions decay exponentially relative to $\lambda_*^g$. After normalisation, the population concentrates on the Perron profile of $\mathcal{K}^*$, proving (a).
+\emph{Step 3 (Dominant class wins).} Among all reachable closed classes, the one with the largest $\lambda_i$ eventually dominates the unnormalised iterate $A^g x_0$: all other contributions decay exponentially relative to $\lambda_*^g$ \citep{seneta_2006}. After normalisation, the population concentrates on the Perron profile of $\mathcal{K}^*$, proving (a).
 
 \emph{Step 4 (Small-mutation perturbation).} At $\varepsilon = 0$, the dominant block is the diagonal fitness matrix $D_\mathcal{K}$, with eigenvector $\delta_{p^*}$. Analytic perturbation of this simple eigenpair \citep{kato_1995,greenbaum_etal_2020} yields (b).
 
-\emph{Step 5 (Spectral ratio via Bauer--Fike).} Since $D_\mathcal{K}$ is diagonal (hence normal), the Bauer--Fike theorem localises every eigenvalue of $A_{\varepsilon,\mathcal{K}^*}$ within $\eta_{\varepsilon,\mathcal{K}}$ of a diagonal entry. When the mutation perturbation is smaller than half the fitness gap ($\eta_{\varepsilon,\mathcal{K}} < \Delta W_\mathcal{K}/2$), the resulting eigenvalue disks are disjoint, giving the explicit ratio bound~\eqref{eq:spectral-ratio} and hence the convergence rate~\eqref{eq:convergence-rate}, proving (c).
+\emph{Step 5 (Spectral ratio via Bauer--Fike).} Since $D_\mathcal{K}$ is diagonal (hence normal), the Bauer--Fike theorem localises every eigenvalue of $A_{\varepsilon,\mathcal{K}^*}$ within $\eta_{\varepsilon,\mathcal{K}}$ of a diagonal entry \citep{greenbaum_etal_2020}. When the mutation perturbation is smaller than half the fitness gap ($\eta_{\varepsilon,\mathcal{K}} < \Delta W_\mathcal{K}/2$), the resulting eigenvalue disks are disjoint, giving the explicit ratio bound~\eqref{eq:spectral-ratio} and hence the convergence rate~\eqref{eq:convergence-rate}, proving (c).
 \end{proof}
 
 \paragraph{Tie case (outside assumption~(iii)).}
@@ -1073,7 +1080,7 @@ Write $\rho_\varepsilon := \rho_{\mathcal{K}^*}$ for the spectral ratio of the u
 
 \subsubsection{Finite-Population Convergence}\label{sec:wrightfisher}
 
-\Cref{thm:quasispecies} is a statement about the deterministic mean-field limit. Real populations are finite and stochastic. The next result closes the gap: the Wright--Fisher process tracks the deterministic limit on any fixed time horizon as the population size $K$ grows, with $O(1/\sqrt{K})$ fluctuations.
+\Cref{thm:quasispecies} is a statement about the deterministic mean-field limit. Real populations are finite and stochastic \citep{park_munoz_deem_2010}. The next result closes the gap: the Wright--Fisher process tracks the deterministic limit on any fixed time horizon as the population size $K$ grows, with $O(1/\sqrt{K})$ fluctuations.
 
 \begin{theorem}[Wright--Fisher under constrained mutation]\label{thm:wrightfisher}
 For the finite-population Wright--Fisher process with $K$ agents, selection proportional to realised fitness $w_t(p)$, and mutation kernel $\Qeps$:
@@ -1083,7 +1090,7 @@ For the finite-population Wright--Fisher process with $K$ agents, selection prop
 
 \item Restricted to any closed class that is aperiodic and irreducible, the chain has a unique stationary distribution and finite mixing time within that class. If a closed class is irreducible but periodic, the stationary distribution is still unique but trajectory convergence is periodic unless one time-averages.
 
-\item As $K \to \infty$ (with iid task sampling each generation), the composition process converges on each fixed finite time horizon in probability to the deterministic expected-fitness replicator-mutator recursion~\eqref{eq:replicator-mutator} on $\Omega_c$. For initial conditions satisfying \cref{thm:quasispecies} assumptions and sufficiently large $K$, finite-horizon trajectories track the deterministic class-conditional limit: single equilibrium under a primitive dominant class, periodic orbit under an irreducible periodic dominant class, or multi-modal behaviour when several classes are co-dominant.
+\item As $K \to \infty$ (with iid task sampling each generation), the composition process converges on each fixed finite time horizon in probability to the deterministic expected-fitness replicator-mutator recursion~\eqref{eq:replicator-mutator} on $\Omega_c$ \citep[Ch.~11]{ethier_kurtz_1986}. For initial conditions satisfying \cref{thm:quasispecies} assumptions and sufficiently large $K$, finite-horizon trajectories track the deterministic class-conditional limit: single equilibrium under a primitive dominant class, periodic orbit under an irreducible periodic dominant class, or multi-modal behaviour when several classes are co-dominant.
 \end{enumerate}
 \end{theorem}
 
@@ -1390,14 +1397,16 @@ Apply \cref{lem:frobenius,lem:perron-expansion} with equal top rates $\lambda_i 
 \begin{lemma}[Small-mutation dominant-block perturbation]\label{lem:small-mutation}
 In dominant block $\mathcal{K}^*$, assume $P^*_\mathcal{K} = \{p^*_\mathcal{K}\}$ and
 \[
-Q_{\varepsilon,\mathcal{K}^*} = I + \tilde{\varepsilon}(Q_{1,\mathcal{K}^*} - I) + O(\varepsilon^2).
+Q_{\varepsilon,\mathcal{K}^*} = I + \varepsilon L_{\mathcal{K}^*} + O(\varepsilon^2),
 \]
 Then $A_{\varepsilon,\mathcal{K}^*} = Q_{\varepsilon,\mathcal{K}^*}^\top D_{\mathcal{K}^*}$ has a simple Perron eigenpair near $\varepsilon = 0$, and the normalized Perron vector satisfies
 \begin{equation}
-x^*_{\mathcal{K}^*}(p) = \frac{\tilde{\varepsilon} \cdot W(p^*_\mathcal{K})\, Q_{1,\mathcal{K}^*}(p^*_\mathcal{K} \to p)}{W(p^*_\mathcal{K}) - W(p)} + O(\varepsilon^2), \quad p \ne p^*_\mathcal{K},
+x^*_{\mathcal{K}^*}(p) = \frac{\varepsilon \cdot W(p^*_\mathcal{K})\, L_{\mathcal{K}^*}(p^*_\mathcal{K} \to p)}{W(p^*_\mathcal{K}) - W(p)} + O(\varepsilon^2), \quad p \ne p^*_\mathcal{K},
 \end{equation}
 with $x^*_{\mathcal{K}^*} \to \delta_{p^*_\mathcal{K}}$ as $\varepsilon \to 0$.
 \end{lemma}
+
+In the uniform per-position mutation model, $L_{\mathcal{K}^*} = N(1 - 1/M)\,(Q_{1,\mathcal{K}^*} - I)$, yielding the equivalent effective-rate notation $\tilde{\varepsilon} = N\varepsilon(1 - 1/M)$ used in earlier drafts.
 
 \begin{proof}
 At $\varepsilon = 0$, $A_{0,\mathcal{K}} = D_\mathcal{K}$ is diagonal with simple top eigenvalue $W(p^*_\mathcal{K})$. Analytic perturbation of simple eigenpairs \citep{kato_1995,greenbaum_etal_2020} yields analyticity and the first-order correction.

@@ -4,45 +4,45 @@ The top-level auxiliary file: main.aux
 The style file: plainnat.bst
 Database file #1: refs.bib
 Warning--empty journal in morandotti_orlando_2025
-You've used 27 entries,
+You've used 29 entries,
             2773 wiz_defined-function locations,
-            748 strings with 8257 characters,
-and the built_in function-call counts, 10641 in all, are:
-= -- 933
-> -- 490
-< -- 21
-+ -- 174
-- -- 147
-* -- 772
-:= -- 1676
-add.period$ -- 84
-call.type$ -- 27
-change.case$ -- 120
-chr.to.int$ -- 27
-cite$ -- 55
-duplicate$ -- 545
-empty$ -- 979
-format.name$ -- 184
-if$ -- 2206
+            763 strings with 8634 characters,
+and the built_in function-call counts, 11539 in all, are:
+= -- 1018
+> -- 530
+< -- 22
++ -- 188
+- -- 159
+* -- 848
+:= -- 1816
+add.period$ -- 92
+call.type$ -- 29
+change.case$ -- 130
+chr.to.int$ -- 29
+cite$ -- 59
+duplicate$ -- 586
+empty$ -- 1058
+format.name$ -- 198
+if$ -- 2393
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 37
-newline$ -- 146
-num.names$ -- 108
-pop$ -- 273
+missing$ -- 39
+newline$ -- 158
+num.names$ -- 116
+pop$ -- 288
 preamble$ -- 1
-purify$ -- 103
+purify$ -- 111
 quote$ -- 0
-skip$ -- 374
+skip$ -- 402
 stack$ -- 0
-substring$ -- 421
-swap$ -- 26
+substring$ -- 468
+swap$ -- 28
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 247
+type$ -- 269
 warning$ -- 1
-while$ -- 110
+while$ -- 119
 width$ -- 0
-write$ -- 352
+write$ -- 382
 (There was 1 warning)

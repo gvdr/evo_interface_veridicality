@@ -74,7 +74,7 @@ function summarise_sim1(io::IO)
     # Figure 1: final risk vs T
     fig1 = Figure(size=(900, 520), fontsize=16)
     ax1 = Axis(fig1[1, 1],
-        title="sim1: Final Mean Bayes Risk vs Number of Tasks",
+        title="Final Mean Bayes Risk vs Number of Tasks",
         xlabel=L"$T$ (tasks/generation)",
         ylabel="Final mean risk")
     lines!(ax1, agg.T, agg.mean_risk, color=:navy, linewidth=2.5)
@@ -89,7 +89,7 @@ function summarise_sim1(io::IO)
     chosen_T = [T for T in chosen_T if T in Ts]
     fig2 = Figure(size=(980, 560), fontsize=16)
     ax2 = Axis(fig2[1, 1],
-        title="sim1: Risk Trajectories (Representative T Values)",
+        title="Risk Trajectories (Representative T Values)",
         xlabel="Generation",
         ylabel="Mean risk")
     palette = [:dodgerblue, :darkorange, :forestgreen, :firebrick]
@@ -106,7 +106,7 @@ function summarise_sim1(io::IO)
     # Figure 3: predicted separation margin vs T
     fig3 = Figure(size=(900, 520), fontsize=16)
     ax3 = Axis(fig3[1, 1],
-        title="sim1: Predicted Separation Margin vs T",
+        title="Predicted Separation Margin vs T",
         xlabel=L"$T$ (tasks/generation)",
         ylabel=L"Predicted $\delta_\mu$")
     lines!(ax3, agg.T, agg.mean_pred_delta, color=:purple4, linewidth=2.5)
@@ -156,7 +156,7 @@ function summarise_sim3(io::IO)
     # Figure 4: final risk and optimal risk vs weight ratio
     fig4 = Figure(size=(920, 540), fontsize=16)
     ax4 = Axis(fig4[1, 1],
-        title="sim3: Final Risk vs Optimal Partition Risk",
+        title="Final Risk vs Optimal Partition Risk",
         xlabel="Weight ratio (Category A / Category B)",
         ylabel="Risk")
     lines!(ax4, agg.weight_ratio, agg.mean_final_risk, color=:firebrick, linewidth=2.5,
@@ -175,7 +175,7 @@ function summarise_sim3(io::IO)
     # Figure 5: percept allocation by region vs weight ratio
     fig5 = Figure(size=(920, 540), fontsize=16)
     ax5 = Axis(fig5[1, 1],
-        title="sim3: Distinct Percepts by Region",
+        title="Distinct Percepts by Region",
         xlabel="Weight ratio (Category A / Category B)",
         ylabel="Mean distinct percept labels")
     lines!(ax5, agg.weight_ratio, agg.mean_percepts_a, color=:dodgerblue, linewidth=2.5,
@@ -194,7 +194,7 @@ function summarise_sim3(io::IO)
     # Figure 6: risk trajectories by weight ratio (replicate-averaged)
     fig6 = Figure(size=(980, 560), fontsize=16)
     ax6 = Axis(fig6[1, 1],
-        title="sim3: Mean Risk Trajectory by Weight Ratio",
+        title="Mean Risk Trajectory by Weight Ratio",
         xlabel="Generation",
         ylabel="Mean risk")
     palette = [:black, :steelblue, :seagreen4, :darkorange, :firebrick]
