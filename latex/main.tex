@@ -613,7 +613,7 @@ T \ge \frac{B^4}{2(\pimin^2 \dmu - \eta)^2} \cdot \bigl(N \log N + \log(1/\alpha
 Union bound over at most $N^N$ encodings, each satisfying \cref{thm:concentration} with $R(p) \ge \pimin^2 \dmu$.
 \end{proof}
 
-Under the full-separation assumptions of \cref{cor:uniform-bound}, this bound is deliberately worst-case: it uses the minimum Bayes risk gap $\pimin^2 \dmu$ for every non-veridical encoding, whereas most non-veridical encodings have much larger Bayes risk (merging multiple well-separated pairs). It also uses the crude union bound over all $N^N$ encodings, ignoring correlations between overlapping encodings. The bound is therefore most useful as a qualitative guarantee that exponentially many tasks are \emph{not} required, polynomial in $N$ suffices, rather than as a practical estimate of the transition point for specific task families. For the latter, the spectral analysis of \cref{sec:gaussian} and the condition-number discussion above provide sharper, family-specific predictions.
+Under the full-separation assumptions of \cref{cor:uniform-bound}, this bound is deliberately worst-case: it uses the minimum Bayes risk gap $\pimin^2 \dmu$ for every non-veridical encoding, whereas most non-veridical encodings have much larger Bayes risk (merging multiple well-separated pairs). It also uses the crude union bound over all $N^N$ encodings, ignoring correlations between overlapping encodings. The bound is therefore most useful as a qualitative guarantee that exponentially many tasks are \emph{not} required, polynomial in $N$ suffices, rather than as a practical estimate of the transition point for specific task families. Equation~\eqref{eq:sample-complexity} should be interpreted as an asymptotic existence guarantee, not as a quantitative predictor of biological phase-transition locations. For the latter, the spectral analysis of \cref{sec:gaussian} and the condition-number discussion above provide sharper, family-specific predictions.
 
 %==============================================================================
 \section{Gaussian Task Model and Spectral Analysis}\label{sec:gaussian}
@@ -865,7 +865,7 @@ For Berke's asexual haploid population (no recombination), the additive genetic 
 
 \subsection{Price Equation for Bayes Risk}\label{sec:price-risk}
 
-The payoff of the Price decomposition comes from setting $z = R$ (Bayes risk). Because fitness is a decreasing linear function of risk (\cref{eq:expected-fitness}), the selection covariance becomes a negative-definite term. Thus, the selection component always pushes mean risk down, while mutation/transmission can offset part of that decrease.
+The payoff of the Price decomposition comes from setting $z = R$ (Bayes risk). Under our expected-fitness specification \eqref{eq:expected-fitness}, fitness is a decreasing linear function of risk, so the selection covariance becomes an exact negative-variance term. Thus, the selection component pushes mean risk down, while mutation/transmission can offset part of that decrease.
 
 \begin{theorem}[Bayes risk decrease in the deterministic mean-field dynamics]\label{thm:price-risk}
 In the deterministic expected-fitness dynamics (replace $w$ by $W$ from \eqref{eq:expected-fitness}), applying Price with $z = R$ gives
@@ -876,7 +876,7 @@ and since $W(p) = TC - T\, R(p)$,
 \begin{equation}\label{eq:risk-decrease}
 \Delta \Rbar = -\frac{T \cdot \Var_\pi(R)}{\Wbar} + \frac{\E_\pi[W \cdot \delta R]}{\Wbar}.
 \end{equation}
-\emph{Selection only:} $\Delta \Rbar = -T \cdot \Var_\pi(R)/\Wbar \le 0$. Mean Bayes risk strictly decreases unless all types in support have equal Bayes risk.
+\emph{Selection only (under the linear map \eqref{eq:expected-fitness}):} $\Delta \Rbar = -T \cdot \Var_\pi(R)/\Wbar \le 0$. Mean Bayes risk strictly decreases unless all types in support have equal Bayes risk.
 \end{theorem}
 
 \begin{proof}
@@ -892,6 +892,10 @@ which yields~\eqref{eq:risk-decrease}. Under selection only ($\delta R \equiv 0$
 \end{proof}
 
 For finite $K$ with realised fitness, \eqref{eq:risk-decrease} holds with sampling noise terms; monotonic decrease is then in expectation or in the mean-field limit, not pathwise for every finite population trajectory.
+
+\begin{remark}[Non-linear fitness maps]
+The exact identity $\Cov_\pi(W, R) = -T\,\Var_\pi(R)$ is specific to the linear expected-fitness map \eqref{eq:expected-fitness}. If instead $W(p) = g(R(p))$ with $g$ strictly decreasing, then $\Cov_\pi(g(R), R) \le 0$ (strict unless $R$ is almost surely constant), so the \emph{direction} of selection remains toward lower risk, but the covariance no longer reduces to a variance term. Quantitatively, higher moments of the risk distribution enter, so \eqref{eq:risk-decrease} should then be read as a sign statement, not an exact identity.
+\end{remark}
 
 \Cref{fig:risk-trajectories} confirms the Price decomposition computationally. Recall that Bayes risk quantifies how poorly an encoding serves the task ecology: $R(p) = 0$ means the encoding preserves all task-relevant distinctions (full ecological veridicality), while $R(p) > 0$ means ecologically meaningful information is lost. \Cref{fig:risk-trajectories} shows that mean Bayes risk declines over generations for all task-diversity levels $T$, consistent with a dominant negative selection term in \eqref{eq:risk-decrease} and with the mean-field tendency of \cref{thm:price-risk}. All four trajectories converge to approximately the same asymptotic risk (${\approx}\,0.08$), which is the capacity floor imposed by $M = 2 \ll N = 11$: with only two percepts, the best achievable encoding is the optimal $2$-cell partition (\cref{thm:lossy}), regardless of how many tasks are sampled. What $T$ controls is not the \emph{destination} but the \emph{noise}: higher $T$ gives a more precise per-generation estimate of the population risk, reducing the stochastic variance visible in the trajectories ($T=1$, blue, fluctuates widely; $T=1000$, red, is nearly deterministic).
 
@@ -984,13 +988,14 @@ where $x^*_{\mathcal{K}^*}$ is the normalized Perron right eigenvector of $A_{\v
 
 \item \textbf{Small-mutation concentration within the dominant class.} If $P^*_\mathcal{K}$ is a singleton $\{p^*_\mathcal{K}\}$ and the mutation kernel admits a first-order expansion
 \[
-Q_{\varepsilon,\mathcal{K}^*} = I + \tilde{\varepsilon}(Q_{1,\mathcal{K}^*} - I) + O(\varepsilon^2),
+Q_{\varepsilon,\mathcal{K}^*} = I + \varepsilon L_{\mathcal{K}^*} + O(\varepsilon^2),
 \]
-where $\tilde{\varepsilon} = N\varepsilon(1 - 1/M)$ is the effective per-encoding mutation rate (the product of per-position rate $\varepsilon$, number of positions $N$, and probability of changing to a different value $1 - 1/M$),
+where $L_{\mathcal{K}^*}$ is the first-order mutation generator on $\mathcal{K}^*$ (nonnegative off-diagonals, row sums zero),
 then $x^*_{\mathcal{K}^*} \to \delta_{p^*_\mathcal{K}}$ as $\varepsilon \to 0$ and, for $p \in \mathcal{K}^*$, $p \ne p^*_\mathcal{K}$:
 \begin{equation}\label{eq:small-mutation}
-x^*_{\mathcal{K}^*}(p) = \frac{\tilde{\varepsilon} \cdot W(p^*_\mathcal{K})\, Q_{1,\mathcal{K}^*}(p^*_\mathcal{K} \to p)}{W(p^*_\mathcal{K}) - W(p)} + O(\varepsilon^2).
+x^*_{\mathcal{K}^*}(p) = \frac{\varepsilon \cdot W(p^*_\mathcal{K})\, L_{\mathcal{K}^*}(p^*_\mathcal{K} \to p)}{W(p^*_\mathcal{K}) - W(p)} + O(\varepsilon^2).
 \end{equation}
+For the uniform per-position mutation model, $L_{\mathcal{K}^*} = N(1 - 1/M)\,(Q_{1,\mathcal{K}^*} - I)$, which recovers the previous effective-rate form $\tilde{\varepsilon} = N\varepsilon(1 - 1/M)$ as a special case.
 
 \item \textbf{Rate via dominant class spectral ratio.} Let $\lambda_{1,\mathcal{K}} > |\lambda_{2,\mathcal{K}}| \ge \cdots$ be eigenvalues of $A_{\varepsilon,\mathcal{K}^*}$ by modulus and define
 \[
