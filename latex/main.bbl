@@ -1,0 +1,162 @@
+\begin{thebibliography}{27}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Anderson(2015)]{anderson_2015}
+Barton~L. Anderson.
+\newblock Where does fitness fit in theories of perception?
+\newblock \emph{Psychonomic Bulletin \& Review}, 22:\penalty0 1507--1511, 2015.
+
+\bibitem[Baldwin(1896)]{baldwin_1896}
+James~Mark Baldwin.
+\newblock A new factor in evolution.
+\newblock \emph{American Naturalist}, 30:\penalty0 441--451, 1896.
+
+\bibitem[Baxter(2000)]{baxter_2000}
+Jonathan Baxter.
+\newblock A model of inductive bias learning.
+\newblock \emph{Journal of Artificial Intelligence Research}, 12:\penalty0
+  149--198, 2000.
+
+\bibitem[Berke et~al.(2022)Berke, Walter-Terrill, Jara-Ettinger, and
+  Scholl]{berke_etal_2022}
+Marlene~D. Berke, Robert Walter-Terrill, Julian Jara-Ettinger, and Brian~J.
+  Scholl.
+\newblock Flexible goals require that inflexible perceptual systems produce
+  veridical representations.
+\newblock \emph{Cognitive Science}, 46\penalty0 (10):\penalty0 e13195, 2022.
+
+\bibitem[Ethier and Kurtz(1986)]{ethier_kurtz_1986}
+Stewart~N. Ethier and Thomas~G. Kurtz.
+\newblock \emph{Markov Processes: Characterization and Convergence}.
+\newblock Wiley, 1986.
+
+\bibitem[Frank(2025)]{frank_2025}
+Steven~A. Frank.
+\newblock The {P}rice equation reveals a universal force--metric--bias law of
+  algorithmic learning and natural selection.
+\newblock \emph{Entropy}, 27:\penalty0 1129, 2025.
+
+\bibitem[Godfrey-Smith(2009)]{godfreysmith_2009}
+Peter Godfrey-Smith.
+\newblock \emph{Darwinian Populations and Natural Selection}.
+\newblock Oxford University Press, 2009.
+
+\bibitem[Godfrey-Smith(2024)]{godfreysmith_2024}
+Peter Godfrey-Smith.
+\newblock \emph{Living on Earth: Forests, Corals, Consciousness, and the Making
+  of the World}.
+\newblock Farrar, Straus and Giroux, 2024.
+
+\bibitem[Greenbaum et~al.(2020)Greenbaum, Li, and Overton]{greenbaum_etal_2020}
+Anne Greenbaum, Ren-Cang Li, and Michael~L. Overton.
+\newblock First-order perturbation theory for eigenvalues and eigenvectors.
+\newblock \emph{SIAM Review}, 62\penalty0 (2):\penalty0 463--482, 2020.
+\newblock arXiv:1903.00785.
+
+\bibitem[Hinton and Nowlan(1987)]{hinton_nowlan_1987}
+Geoffrey~E. Hinton and Steven~J. Nowlan.
+\newblock How learning can guide evolution.
+\newblock \emph{Complex Systems}, 1:\penalty0 495--502, 1987.
+
+\bibitem[Hoeffding(1963)]{hoeffding_1963}
+Wassily Hoeffding.
+\newblock Probability inequalities for sums of bounded random variables.
+\newblock \emph{Journal of the American Statistical Association}, 58\penalty0
+  (301):\penalty0 13--30, 1963.
+
+\bibitem[Hoffman(2019)]{hoffman_2019}
+Donald~D. Hoffman.
+\newblock \emph{The Case Against Reality}.
+\newblock W.~W.~Norton, 2019.
+
+\bibitem[Hoffman and Singh(2012)]{hoffman_singh_2012}
+Donald~D. Hoffman and Manish Singh.
+\newblock Computational evolutionary perception.
+\newblock \emph{Perception}, 41:\penalty0 1073--1091, 2012.
+
+\bibitem[Hoffman et~al.(2015)Hoffman, Singh, and Prakash]{hoffman_etal_2015}
+Donald~D. Hoffman, Manish Singh, and Chetan Prakash.
+\newblock The interface theory of perception.
+\newblock \emph{Psychonomic Bulletin \& Review}, 22:\penalty0 1480--1506, 2015.
+
+\bibitem[Kato(1995)]{kato_1995}
+Tosio Kato.
+\newblock \emph{Perturbation Theory for Linear Operators}.
+\newblock Springer, 1995.
+
+\bibitem[Maurer et~al.(2016)Maurer, Pontil, and
+  Romera-Paredes]{maurer_etal_2016}
+Andreas Maurer, Massimiliano Pontil, and Bernardino Romera-Paredes.
+\newblock The benefit of multitask representation learning.
+\newblock \emph{JMLR}, 17:\penalty0 1--32, 2016.
+
+\bibitem[Morandotti and Orlando(2025)]{morandotti_orlando_2025}
+Marco Morandotti and Gianluca Orlando.
+\newblock Replicator dynamics as the large population limit of a discrete
+  {M}oran process in the weak selection regime.
+\newblock 2025.
+\newblock arXiv:2501.12688.
+
+\bibitem[Pigliucci and Kaplan(2006)]{pigliucci_kaplan_2006}
+Massimo Pigliucci and Jonathan Kaplan.
+\newblock \emph{Making Sense of Evolution: The Conceptual Foundations of
+  Evolutionary Biology}.
+\newblock University of Chicago Press, 2006.
+
+\bibitem[Prakash et~al.(2020)Prakash, Fields, Hoffman, Prentner, and
+  Singh]{prakash_etal_2020}
+Chetan Prakash, Chris Fields, Donald~D. Hoffman, Robert Prentner, and Manish
+  Singh.
+\newblock Fact, fiction, and fitness.
+\newblock \emph{Entropy}, 22\penalty0 (5):\penalty0 514, 2020.
+
+\bibitem[Prakash et~al.(2021)Prakash, Stephens, Hoffman, Singh, and
+  Fields]{prakash_etal_2021}
+Chetan Prakash, Kyle~D. Stephens, Donald~D. Hoffman, Manish Singh, and Chris
+  Fields.
+\newblock Fitness beats truth in the evolution of perception.
+\newblock \emph{Acta Biotheoretica}, 69:\penalty0 319--341, 2021.
+
+\bibitem[Price(1970)]{price_1970}
+George~R. Price.
+\newblock Selection and covariance.
+\newblock \emph{Nature}, 227:\penalty0 520--521, 1970.
+
+\bibitem[Price(1972)]{price_1972}
+George~R. Price.
+\newblock Extension of covariance selection mathematics.
+\newblock \emph{Annals of Human Genetics}, 35:\penalty0 485--490, 1972.
+
+\bibitem[Pylyshyn(1999)]{pylyshyn_1999}
+Zenon~W. Pylyshyn.
+\newblock Is vision continuous with cognition? {T}he case for cognitive
+  impenetrability of visual perception.
+\newblock \emph{Behavioral and Brain Sciences}, 22\penalty0 (3):\penalty0
+  341--365, 1999.
+
+\bibitem[Seneta(2006)]{seneta_2006}
+Eugene Seneta.
+\newblock \emph{Non-negative Matrices and Markov Chains}.
+\newblock Springer, 2006.
+
+\bibitem[Sober(2008)]{sober_2008}
+Elliott Sober.
+\newblock \emph{Evidence and Evolution: The Logic Behind the Science}.
+\newblock Cambridge University Press, 2008.
+
+\bibitem[Sober(2024)]{sober_2024}
+Elliott Sober.
+\newblock \emph{The Philosophy of Evolutionary Theory}.
+\newblock Cambridge University Press, 2024.
+
+\bibitem[von Uex{\"u}ll(2010)]{vonuexkull_1934}
+Jakob von Uex{\"u}ll.
+\newblock \emph{A Foray into the Worlds of Animals and Humans}.
+\newblock University of Minnesota Press, 2010.
+\newblock Trans.\ J.~D.~O'Neil, 2010.
+
+\end{thebibliography}
